@@ -1,0 +1,25 @@
+.banner{
+    background-image: url('/public/banner2.jpg');
+}
+.banner-content{
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    justify-content: space-around;
+}
+.tagline{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.carouselItems{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: white;
+}

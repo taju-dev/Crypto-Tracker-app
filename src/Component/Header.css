@@ -1,0 +1,7 @@
+.logo-bar{
+flex: 1;
+color: gold;
+font-family: "Montserrat";
+font-weight: bold;
+cursor: pointer;
+}
