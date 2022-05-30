@@ -1,7 +1,5 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Crypto } from "../CryptoContext";
-import { CoinList } from "./config/Api";
 import {
   Container,
   LinearProgress,
@@ -21,22 +19,14 @@ import { numberWithCommas } from "./Banner/Carousel";
 const CoinsTable = () => {
   const navigate = useNavigate();
 
-  const [coins, setCoins] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
-  const { currency, symbol } = useContext(Crypto);
-
-  const getCoins = async () => {
-    setLoading(true);
-    const { data } = await axios.get(CoinList(currency));
-    setCoins(data);
-    setLoading(false);
-  };
+  const { currency, symbol, coins, loading, getCoins } = useContext(Crypto);
 
   useEffect(() => {
     getCoins();
+    // eslint-disable-next-line
   }, [currency]);
 
   const handleSearch = () => {

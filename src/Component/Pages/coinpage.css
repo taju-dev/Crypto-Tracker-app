@@ -1,76 +1,80 @@
 .main-container{
+    display: flex;
     width: 90vw;
     height: 90vh;
     margin: auto;
+    margin-top: 25px;
 }
-.container{
-    display: flex;
-    margin-top: 20px;
+.container-1{
+    margin-top: 25px;
+    width: 30%;
 }
 .sidebar{
-    width: 30%;
+    border-right: 3px solid gold;
+    padding-right: 15px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-top: 25px;
-    padding: 25;
-    border-right: 2px solid gold;
-    padding-right: 20px;
-}
-.heading{
-    font-weight: bold;
-    margin-bottom: 20;
-    font-family: "Montserrat";
-}
-.description{
-    width: 100%;
-    font-family: "Montserrat";
-    padding: 25;
-    padding-bottom: 15;
-    padding-top: 0;
-    text-align: justify;
+    flex-direction: column;
 }
 .marketData{
-    align-self: flex-start;
-    padding: 25;
-    padding-top: 10;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
     width: 100%;
 }
-
-@media screen and (max-width:600px) {
-    .container{
-        display: flex;
-        flex-direction: column;
-        margin-top: 5px;
-    }
-    .sidebar{
-        width: 100%;
-        border-right: none;
-        margin-bottom: 20px;
-    }
-    
+.coin-info{
+    width: 70%;
 }
 
-
-@media screen and (max-width: 1200px) and (min-width: 601px) { 
-    .container{
+@media screen and (max-width: 1230px) {
+    .main-container{
         display: flex;
         flex-direction: column;
-        padding-bottom: 20px;
+        width: 90vw;
+        margin: auto;
+        margin-top: 10px;
+    }
+    .container-1{
+        margin-top: 25px;
+        width: 100%;
     }
     .sidebar{
-        width: 100%;
         border-right: none;
-        margin-bottom: 20px;
-    }
-    .containe{
-        width: 100%;
-    }
-    .description{
+        padding-right: 15px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
         text-align: center;
+    }
+    .coin-info{
+        width: 100%;
     }
     .marketData{
         display: flex;
+        align-items: center;
         justify-content: space-evenly;
+        flex-direction: column;
+        width: 100%;
+    }
+    .marketData:button{
+        width: 20%;
+    }
+
+}
+@media screen and (max-width: 600px) {
+    .main-container{
+        margin-top: 10px;
+    }
+    .marketData{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        flex-direction: column;
+        width: 100%;
+    }
+    .coin-info{
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
 }

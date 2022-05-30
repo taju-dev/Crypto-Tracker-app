@@ -43,6 +43,7 @@ const CoinInfo = ({ coin }) => {
 
   useEffect(() => {
     fectData();
+    // eslint-disable-next-line
   }, [currency, days]);
 
   return (

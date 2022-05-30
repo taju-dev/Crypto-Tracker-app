@@ -10,12 +10,14 @@ import {
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Crypto } from "../CryptoContext";
+import AuthModel from "./authentication/AuthModel";
+import UserSidebar from "./authentication/UserSidebar";
 import "./Header.css";
 
 const Header = () => {
   const navigate = useNavigate();
 
-  const { currency, setCurrency } = useContext(Crypto);
+  const { currency, setCurrency, user } = useContext(Crypto);
   console.log(currency);
 
   return (
@@ -39,7 +41,7 @@ const Header = () => {
           <Select
             style={{
               width: 100,
-              heigh: 40,
+              height: 40,
               marginRight: 15,
             }}
             variant="outlined"
@@ -49,6 +51,7 @@ const Header = () => {
             <MenuItem value={"USD"}>USD</MenuItem>
             <MenuItem value={"INR"}>INR</MenuItem>
           </Select>
+          {user ? <UserSidebar /> : <AuthModel />}
         </Toolbar>
       </Container>
     </AppBar>
