@@ -5,6 +5,7 @@ import { Line } from "react-chartjs-2";
 import { Crypto } from "../../CryptoContext";
 import { HistoricalChart } from "../config/Api";
 import "./coinInfo.css";
+// eslint-disable-next-line
 import Chart from "chart.js/auto";
 import SelectButton from "../SelectButton";
 
