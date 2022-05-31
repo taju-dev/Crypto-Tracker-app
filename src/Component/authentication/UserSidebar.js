@@ -109,7 +109,7 @@ export default function UserSidebar() {
                     WatchList
                   </span>
                   {coins.map((coin) => {
-                    if (watchlist.includes(coin.id)) {
+                    if (watchlist.includes(coin.id))
                       return (
                         <div className="coin">
                           <span>{coin.name}</span>
@@ -124,7 +124,7 @@ export default function UserSidebar() {
                           </span>
                         </div>
                       );
-                    }
+                    else return <></>;
                   })}
                 </div>
               </div>

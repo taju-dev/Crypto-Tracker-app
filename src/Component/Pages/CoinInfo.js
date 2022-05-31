@@ -1,20 +1,17 @@
-import { CircularProgress } from "@mui/material";
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
-import { Line } from "react-chartjs-2";
-import { Crypto } from "../../CryptoContext";
+import { useContext, useEffect, useState } from "react";
 import { HistoricalChart } from "../config/Api";
-import "./coinInfo.css";
-import Chart from "chart.js/auto";
+import { Line } from "react-chartjs-2";
+import { CircularProgress } from "@mui/material";
+import { Crypto } from "../../CryptoContext";
 import SelectButton from "../SelectButton";
 
 const CoinInfo = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
   const [days, setDays] = useState(1);
-
   const { currency } = useContext(Crypto);
 
-  const fectData = async () => {
+  const fetchHistoricData = async () => {
     const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
 
     setHistoricData(data.prices);
@@ -39,15 +36,13 @@ const CoinInfo = ({ coin }) => {
     },
   ];
 
-  // console.log(historicData);
-
   useEffect(() => {
-    fectData();
-    // eslint-disable-next-line
-  }, [currency, days]);
+    fetchHistoricData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [days, currency]);
 
   return (
-    <div className="containe">
+    <div className="container">
       {!historicData ? (
         <CircularProgress style={{ color: "gold" }} size={250} thickness={1} />
       ) : (
@@ -68,7 +63,6 @@ const CoinInfo = ({ coin }) => {
                   data: historicData.map((coin) => coin[1]),
                   label: `Price ( Past ${days} Days ) in ${currency}`,
                   borderColor: "#EEBC1D",
-                  tension: 0.1,
                 },
               ],
             }}
@@ -83,17 +77,16 @@ const CoinInfo = ({ coin }) => {
           <div
             style={{
               display: "flex",
-              width: "100%",
-              justifyContent: "space-around",
               marginTop: 20,
+              justifyContent: "space-around",
+              width: "100%",
             }}
           >
             {chartDays.map((day) => (
               <SelectButton
                 key={day.value}
-                onClick={() => {
-                  setDays(day.value);
-                }}
+                onClick={() => setDays(day.value)}
+                selected={day.value === days}
               >
                 {day.label}
               </SelectButton>
